@@ -2,12 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import App from './App.tsx';
-
+import {ErrorPage} from './components/ErrorPage.tsx';
 
 const router = createBrowserRouter([
   {
     path:'/',
-    element:<div>root</div>
+    element:<div>root</div>,
+    errorElement:<ErrorPage/>
   },
   {
     path:'/1',
