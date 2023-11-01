@@ -3,7 +3,7 @@ import {useRef,useState} from 'react'
 import { animated, useTransition } from '@react-spring/web'
 import {Link, useLocation, useOutlet } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
-const linkMap = {
+const linkMap:Record<string, string> = {
   '/welcome/1': '/welcome/2',
   '/welcome/2': '/welcome/3',
   '/welcome/3': '/welcome/4',
@@ -15,7 +15,7 @@ export const WelcomeLayout:React.FC = ()=>{
   const location = useLocation()
   const outlet = useOutlet()
   map.current[location.pathname] = outlet
-  const [extraStyle, setExtraStyle] = useState({ position: 'relative' })
+  const [extraStyle, setExtraStyle] = useState<{ position: 'relative' | 'absolute' }>({ position: 'relative' })
   const transitions = useTransition(location.pathname, {
     // 进入状态
     from: { transform: 'translateX(100%)' },
