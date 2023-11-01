@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react';
-import {useRef} from 'react'
+import {useRef,useState} from 'react'
 import { animated, useTransition } from '@react-spring/web'
 import {Link, useLocation, useOutlet } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
@@ -15,6 +15,7 @@ export const WelcomeLayout:React.FC = ()=>{
   const location = useLocation()
   const outlet = useOutlet()
   map.current[location.pathname] = outlet
+  const [extraStyle, setExtraStyle] = useState({ position: 'relative' })
   const transitions = useTransition(location.pathname, {
     // 进入状态
     from: { transform: 'translateX(100%)' },
@@ -22,19 +23,27 @@ export const WelcomeLayout:React.FC = ()=>{
     enter: { transform: 'translateX(0%)' },
     // 退出状态
     leave: { transform: 'translateX(-100%)' },
-    config: { duration: 300 }
+    config: { duration: 300 },
+    onStart: () => {
+      setExtraStyle({ position: 'absolute' })
+    },
+    onRest: () => {
+      setExtraStyle({ position: 'relative' })
+    }
   })
   return (
     <div className="bg-#5f34b h-screen flex flex-col items-stretch pb-16px" >
       <header shrink-0 text-center pt-64px>
-        <img src={logo} w-64px />
+        <img src={logo} w-64px  h-69px />
         <h1 text="#D4D4ee" text-32px>pigMoney</h1>
       </header>
-      <main shrink-1 grow-1  m-16px>
+      <main shrink-1 grow-1  relative>
         {transitions((style, pathname) =>
-          <animated.div key={pathname} style={style} bg-white  w="100%" h="100%" rounded-8px flex justify-center items-center >
+          <animated.div key={pathname} style={{ ...style, ...extraStyle }} w="100%" h="100%" p-16px flex>
+          <div grow-1 bg-white flex justify-center items-center rounded-8px>
             {map.current[pathname]}
-          </animated.div>
+          </div>
+        </animated.div>
         )}
       </main>
       <footer shrink-0 text-center text-24px text-white grid grid-cols-3 grid-rows-1>
