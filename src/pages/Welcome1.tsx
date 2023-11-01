@@ -1,13 +1,10 @@
 import * as React from 'react';
-import c from 'classnames'
-import s from './Welcome1.module.scss'
+import {Link} from 'react-router-dom'
 
 export const Welcome1:React.FC = ()=>{
   return (
-    <div className={c(s.wrapper, s.blue)}>
-    <div className='frank'>
-      pigMoney
+    <div>
+      1 <Link to="/welcome/2">下一页</Link>
     </div>
-  </div>
   )
 }
