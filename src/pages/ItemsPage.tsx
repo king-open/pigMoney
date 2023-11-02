@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import {AddItemFloatButton} from '../components/AddItemFloatButton.tsx';
+import {Icon} from '../components/Icon.tsx';
 import {TimeRange, TimeRangePicker} from '../components/TimeRangePicker.tsx';
 import { TopMenu } from '../components/TopMenu'
 
+// @ts-ignore
 import { TopNav } from '../components/TopNav'
 import { useMenuStore } from '../stores/useMenuStore'
 import {ItemsList} from './ItemsPage/ItemsList.tsx';
