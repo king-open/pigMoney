@@ -5,6 +5,7 @@ import { router } from './routes/router'
 import './global.scss'
 import 'virtual:uno.css'
 import 'virtual:svgsprites'
+import './app.scss'
 
 const div = document.getElementById('root') as HTMLElement
 
