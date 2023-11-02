@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {AddItemFloatButton} from '../components/AddItemFloatButton.tsx';
-import {Icon} from '../components/Icon.tsx';
 import {TimeRange, TimeRangePicker} from '../components/TimeRangePicker.tsx';
 import { TopMenu } from '../components/TopMenu'
 
@@ -41,7 +40,7 @@ export const ItemsPage:React.FC = ()=>{
     }
   ])
 
-  const { visible } = useMenuStore()
+  const { visible ,setVisible} = useMenuStore()
   return  (
     <div>
       <Div>
@@ -51,7 +50,7 @@ export const ItemsPage:React.FC = ()=>{
       <ItemsSummary />
       <ItemsList items={items} />
       <AddItemFloatButton />
-      {visible ? <TopMenu /> : null}
+      {visible ? <TopMenu onClickMask={() => { setVisible(false) }} /> : null}
     </div>
   )
 }
