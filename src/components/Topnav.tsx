@@ -4,7 +4,7 @@ import { useMenuStore } from '../stores/useMenuStore'
 interface Props {
   title?: string
 }
-export const TopNav: React.FC<Props> = ({ title = '山竹记账' }) => {
+export const TopNav: React.FC<Props> = ({ title = 'pigMoney' }) => {
   const { visible,setVisible } = useMenuStore()
   return (
     <div text-white flex items-center pt-24px pb-8px px-24px>
