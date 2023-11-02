@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import {AddItemFloatButton} from '../components/AddItemFloatButton.tsx';
 import {TimeRange, TimeRangePicker} from '../components/TimeRangePicker.tsx';
-import {Topnav} from '../components/Topnav.tsx';
+import { TopMenu } from '../components/TopMenu'
+// @ts-ignore
+import { TopNav } from '../components/TopNav'
+import { menuContext } from '../contexts/menuContext'
 import {ItemsList} from './ItemsPage/ItemsList.tsx';
 import {ItemsSummary} from './ItemsPage/ItemsSummary.tsx';
-import {useState} from 'react';
+import React, {useState} from 'react';
 
 
 const Div = styled.div`
@@ -35,15 +38,24 @@ export const ItemsPage:React.FC = ()=>{
       updated_at: '2021-01-01T00:00:00.000Z',
     }
   ])
+
+  function setVisible() {
+
+  }
+
+  let visible;
   return  (
     <div>
-      <Div>
-        <Topnav/>
-        <TimeRangePicker selected={timeRange} onSelected={setTimeRange} />
-      </Div>
-      <ItemsSummary/>
-      <ItemsList items={items}/>
-      <AddItemFloatButton/>
+      <menuContext.Provider value={{ setVisible }}>
+        <Div>
+          <TopNav />
+          <TimeRangePicker selected={timeRange} onSelected={setTimeRange} />
+        </Div>
+        <ItemsSummary />
+        <ItemsList items={items} />
+        <AddItemFloatButton />
+        {visible ? <TopMenu /> : null}
+      </menuContext.Provider>
     </div>
   )
 }
