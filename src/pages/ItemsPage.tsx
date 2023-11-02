@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import {AddItemFloatButton} from '../components/AddItemFloatButton.tsx';
 import {TimeRange, TimeRangePicker} from '../components/TimeRangePicker.tsx';
 import {Topnav} from '../components/Topnav.tsx';
-import {ItemsList} from './ItemsList.tsx';
-import {ItemsSummary} from './ItemsSummary.tsx';
+import {ItemsList} from './ItemsPage/ItemsList.tsx';
+import {ItemsSummary} from './ItemsPage/ItemsSummary.tsx';
 import {useState} from 'react';
 
 
