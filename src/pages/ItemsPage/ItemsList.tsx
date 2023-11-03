@@ -20,7 +20,9 @@ const getKey = (pageIndex: number, prev: Resources<Item>) => {
 export const ItemsList: React.FC<Props> = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, size,setSize } = useSWRInfinite(
-    getKey, async path => (await ajax.get<Resources<Item>>(path)).data
+    getKey,
+    async path => (await ajax.get<Resources<Item>>(path)).data,
+    {revalidateFirstPage:false}
   )
   const onLoadMore = () => {
     setSize(size + 1)
