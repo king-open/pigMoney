@@ -7,6 +7,7 @@ import type { ReactNode } from 'react'
 import s from './ItemsNewPage.module.scss'
 import { Tags } from './ItemsNewPage/Tags'
 
+
 type ItemKind = 'income' | 'expenses'
 export const ItemsNewPage: React.FC = () => {
   const tabItems: { key: Item['kind']; text: string; element?: ReactNode }[]
