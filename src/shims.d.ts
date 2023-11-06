@@ -15,6 +15,7 @@ declare module 'react' {
     fixed?:string
     b?:string
     z?:string
+    'focus:shadow'?:boolean
   }
   interface SVGProps<T> extends SVGAttributes<T>, ClassAttributes<T> {
     w?: string
