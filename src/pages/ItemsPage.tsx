@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {AddItemFloatButton} from '../components/AddItemFloatButton.tsx';
 import {TimeRange, TimeRangePicker} from '../components/TimeRangePicker.tsx';
 import { TopMenu } from '../components/TopMenu'
@@ -25,7 +24,7 @@ export const ItemsPage:React.FC = ()=>{
           <Icon name="menu" className="w-24px h-24px"
                 onClick={() => { setVisible(!visible) }} />
         } />
-        <TimeRangePicker selected={timeRange} onSelected={setTimeRange} />
+        <TimeRangePicker selected={timeRange} onSelect={setTimeRange} />
       </Gradient>
       <ItemsSummary />
       <ItemsList />
