@@ -3,7 +3,6 @@ type Props = {
   kind: Item['kind']
 }
 export const Tags: React.FC<Props> = (props) => {
-  const { kind } = props
   const tags = Array.from({ length: 91 })
   return (
     <div>
