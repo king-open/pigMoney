@@ -10,6 +10,7 @@ import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
 import {SignInPage} from '../pages/SignInPage.tsx';
 import {ItemsNewPage} from '../pages/ItemsNewPage.tsx';
+import {TagsNewPage} from '../pages/TagsNewPage.tsx';
 
 
 export const router = createBrowserRouter([
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
   },
   { path: '/items', element: <ItemsPage/> },
   { path: '/items/new', element: <ItemsNewPage/> },
+  { path: '/tags/new', element: <TagsNewPage /> },
   { path: '/tags', element: <div>标签</div> },
   { path: '/sign_in', element: <SignInPage /> },
   { path: '/chart', element: <div>图表</div> },

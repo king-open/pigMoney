@@ -22,8 +22,9 @@ export const ItemsNewPage: React.FC = () => {
       <Gradient className="grow-0 shrink-0">
         <TopNav title="记一笔" icon={<Icon name="back" />} />
       </Gradient>
-      <Tabs tabItems={tabItems} className="text-center grow-1 shrink-1 overflow-hidden" classPrefix='itemsNewPage'
-            value={tabItem}
+      <Tabs tabItems={tabItems} className="text-center grow-1 shrink-1 overflow-hidden"
+            classPrefix='itemsNewPage'
+           value={tabItem}
             onChange={(tabItem) => { setTabItem(tabItem) }} />
       <DateAndAmount className="grow-0 shrink-0" />
     </div>
