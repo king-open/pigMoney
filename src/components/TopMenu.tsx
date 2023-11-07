@@ -20,7 +20,7 @@ export const TopMenu:React.FC<Props> = (props)=>{
       if (value.opacity < 0.1) { setMaskVisible(false) }
     }
   })
-  const menuStyles = useSpring({
+  const menuStyles2 = useSpring({
     opacity: visible ? 1 : 0,
     transform: visible ? 'translateX(0%)' : 'translateX(-100%)',
   })
@@ -35,7 +35,7 @@ export const TopMenu:React.FC<Props> = (props)=>{
                     z="[calc(var(--z-menu)-1)]" onClick={onClickMask}
       />
       <animated.div fixed top-0 left-0 w="70vw" max-w-20em h-screen flex flex-col
-                    style={menuStyles}
+                    style={menuStyles2}
                     z="[var(--z-menu)]">
         <CurrentUser className="grow-0 shrink-0" />
         <Menu className="grow-1 shrink-1" />
