@@ -17,6 +17,7 @@ interface SignIn {
 export const useSignInStore = create<SignIn>((set) => (
   {
     data: {
+      // TDOO: 删掉这个邮箱地址
       email: '',
       code: ''
     },
