@@ -4,8 +4,10 @@ import { Gradient } from '../components/Gradient'
 import { Icon } from '../components/Icon'
 import { TopNav } from '../components/TopNav'
 import { useSignInStore } from '../stores/useSignInStore'
+import type {AxiosError} from 'axios';
 import axios from 'axios';
 import {ajax} from '../lib/ajax.ts';
+import type {FormError} from '../lib/validate.ts';
 import {hasError,validate} from '../lib/validate.ts';
 import {Input} from '../components/Input.tsx';
 
@@ -14,6 +16,10 @@ export const SignInPage: React.FC = () => {
   // @ts-ignore
   const { data,error,setData,setError} = useSignInStore()
   const nav = useNavigate()
+  const onSubmitError = (err: AxiosError<{ errors: FormError<typeof data> }>) => {
+    setError(err.response?.data?.errors ?? {})
+    throw error
+  }
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     const newError = validate(data, [
@@ -25,8 +31,11 @@ export const SignInPage: React.FC = () => {
     setError(newError)
     if (!hasError(newError)) {
       await ajax.post('/api/v1/session', data)
-      // TODO
-      // 保存 JWT 作为登录凭证
+      const response = await ajax.post<{ jwt: string }>('http://121.196.236.94:8080/api/v1/session', data)
+        .catch(onSubmitError)
+      const jwt = response.data.jwt
+      console.log('jwt', jwt)
+      localStorage.setItem('jwt', jwt)
       nav('/home')
     }
   }
